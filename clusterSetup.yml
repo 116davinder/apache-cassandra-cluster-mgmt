@@ -1,0 +1,9 @@
+---
+
+- hosts: clusterNodes
+  gather_facts: true
+  roles:
+    - common
+    - install
+    - configure
+    - service
