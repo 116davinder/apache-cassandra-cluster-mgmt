@@ -4,6 +4,7 @@
   gather_facts: true
   roles:
     - common
+    - java
     - install
     - configure
     - service
