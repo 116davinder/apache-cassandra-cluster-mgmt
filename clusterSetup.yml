@@ -3,11 +3,14 @@
 - hosts: clusterNodes
   gather_facts: true
   pre_tasks:
-    - import_role:
+  
+    - name: Including system upgrade role
+      import_role:
         name: systemUpgrade
       when: systemUpgradeRequired
 
-    - import_role:
+    - name: Including java role
+      import_role:
         name: java
 
   roles:
