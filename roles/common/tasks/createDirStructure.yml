@@ -1,0 +1,14 @@
+---
+
+- name: Creating installing dir | {{ cassandraInstallDir }}
+  file:
+    path: "{{ cassandraInstallDir }}"
+    state: directory
+
+- name: Creating data dir | {{ cassandraDataDir }}
+  file:
+    path: "{{ cassandraDataDir }}"
+    state: directory
+    owner: "{{ cassandraUser }}"
+    group: "{{ cassandraGroup }}"
+    mode: 0775

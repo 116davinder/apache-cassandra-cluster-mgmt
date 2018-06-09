@@ -1,0 +1,6 @@
+---
+- name: Download cassandra
+  include_tasks: download.yml
+
+- name: Create cassandra dir symlink
+  include_tasks: createSymlink.yml

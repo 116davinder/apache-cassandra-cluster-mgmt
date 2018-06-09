@@ -1,0 +1,15 @@
+---
+
+- name: creating cassandra group
+  group:
+    name: "{{  cassandraGroup }}"
+    gid: "{{ cassandraGroupId }}"
+    state: present
+
+- name: creating cassandra user
+  user:
+    name: "{{ cassandraUser }}"
+    comment: Cassandra Default User
+    uid: "{{ cassandraUserId }}"
+    gid: "{{ cassandraGroupId }}"
+    group: "{{ cassandraGroup }}"

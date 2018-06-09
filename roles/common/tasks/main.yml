@@ -1,0 +1,7 @@
+---
+
+- name: Create user and group
+  include_tasks: createUser.yml
+
+- name: Create cassandra dir structure
+  include_tasks: createDirStructure.yml

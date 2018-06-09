@@ -3,3 +3,19 @@
 systemUpgradeRequired: false
 
 javaVersion: 8
+
+cassandraGroup: cassandra
+cassandraUser: cassandra
+cassandraGroupId: 5000
+cassandraUserId: 5000
+
+cassandraInstallDir: /opt
+cassandraDataDir: /opt/cassandra-data
+
+cassandraVersion: 3.11.2
+downloadRegion: eu          # eu/us
+cassandraUrl: "http://www-{{ downloadRegion }}.apache.org/dist/cassandra/{{ cassandraVersion }}/apache-cassandra-{{ cassandraVersion }}-bin.tar.gz"
+
+proxyEnv:
+  http_proxy: ""
+  https_proxy: ""
