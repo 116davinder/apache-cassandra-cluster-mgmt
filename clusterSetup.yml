@@ -4,6 +4,10 @@
   gather_facts: true
   pre_tasks:
     - import_role:
+        name: systemUpgrade
+      when: systemUpgradeRequired
+
+    - import_role:
         name: java
 
   roles:
