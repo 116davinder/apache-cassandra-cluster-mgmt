@@ -13,4 +13,4 @@
     create: true
     block: |
       export JAVA_HOME={{ javaHomeLocation.stdout }}
-      export PATH=$PATH:{{ javaHomeLocation.stdout }}/bin
+      export PATH=$JAVA_HOME/jre/bin:$PATH

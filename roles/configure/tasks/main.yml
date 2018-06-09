@@ -1,0 +1,11 @@
+---
+
+- name: Creating cassandra configurations
+  template:
+    src: "{{ item }}"
+    dest: "{{ cassandraInstallDir }}/cassandra/conf/{{ item }}"
+  loop:
+    - cassandra-rackdc.properties
+    - cassandra-topology.properties
+    - cassandra.yaml
+    - jvm.options

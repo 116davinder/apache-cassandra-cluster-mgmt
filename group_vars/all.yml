@@ -16,6 +16,12 @@ cassandraVersion: 3.11.2
 downloadRegion: eu          # eu/us
 cassandraUrl: "http://www-{{ downloadRegion }}.apache.org/dist/cassandra/{{ cassandraVersion }}/apache-cassandra-{{ cassandraVersion }}-bin.tar.gz"
 
+cassandraPidDir: /var/run/cassandra
+cassandraPidFile: "{{ cassandraPidDir }}/cassandra.pid"
+
+cassandraClusterName: 116davinder
+cassandraNumToken: 256
+
 proxyEnv:
   http_proxy: ""
   https_proxy: ""

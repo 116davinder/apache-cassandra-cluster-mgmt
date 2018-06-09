@@ -1,1 +1,18 @@
 ---
+
+- name: Download and Unarchive cassandra | {{ cassandraVersion }}
+  unarchive:
+    src: "{{ cassandraUrl }}"
+    dest: "{{ cassandraInstallDir }}"
+    owner: "{{ cassandraUser }}"
+    group: "{{ cassandraGroup }}"
+    validate_certs: false
+    remote_src: yes
+
+- name: Ensuring permissions on unarchieved files
+  file:
+    path: "{{ cassandraInstallDir }}/apache-cassandra-{{ cassandraVersion }}"
+    owner: "{{ cassandraUser }}"
+    group: "{{ cassandraGroup }}"
+    recurse: true
+    mode: 0775

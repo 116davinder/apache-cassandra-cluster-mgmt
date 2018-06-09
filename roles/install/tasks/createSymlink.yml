@@ -1,1 +1,9 @@
 ---
+
+- name: Creating symlink to latest version | {{ cassandraVersion }}
+  file:
+    src: "{{ cassandraInstallDir }}/apache-cassandra-{{ cassandraVersion }}"
+    dest: "{{ cassandraInstallDir }}/cassandra"
+    owner: "{{ cassandraUser }}"
+    group: "{{ cassandraGroup }}"
+    state: link

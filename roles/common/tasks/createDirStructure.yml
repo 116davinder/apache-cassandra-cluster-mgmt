@@ -5,10 +5,16 @@
     path: "{{ cassandraInstallDir }}"
     state: directory
 
-- name: Creating data dir | {{ cassandraDataDir }}
+- name: Creating casssandra directories
   file:
-    path: "{{ cassandraDataDir }}"
+    path: "{{ item }}"
     state: directory
     owner: "{{ cassandraUser }}"
     group: "{{ cassandraGroup }}"
     mode: 0775
+  loop:
+    - "{{ cassandraDataDir }}"
+    - "{{ cassandraDataDir }}/data"
+    - "{{ cassandraDataDir }}/commitlog"
+    - "{{ cassandraDataDir }}/saved_caches"
+    - "{{ cassandraPidDir }}"

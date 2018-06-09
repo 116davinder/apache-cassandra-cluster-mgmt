@@ -1,5 +1,8 @@
 ---
 
+- name: Installing common utils
+  include_tasks: commonUtils.yml
+
 - name: Create user and group
   include_tasks: createUser.yml
 

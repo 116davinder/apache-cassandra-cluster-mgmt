@@ -6,11 +6,11 @@ Vagrant.configure("2") do |config|
     controller.vm.hostname = "controller"
     controller.vm.network :private_network, ip: "192.168.56.100"
     controller.vm.provision "shell",
-      inline: "sudo yum install ansible -y"
+      inline: "sudo yum install epel-release -y && sudo yum install python-pip -y && sudo pip install ansible"
   end
 
 ######################### Cluster Nodes
-  cluster_nodes=3
+  cluster_nodes=2
 
     (1..cluster_nodes).each do |i|
       config.vm.define "cassandra-#{i}" do |node|

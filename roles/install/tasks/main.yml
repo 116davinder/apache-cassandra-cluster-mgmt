@@ -4,3 +4,14 @@
 
 - name: Create cassandra dir symlink
   include_tasks: createSymlink.yml
+
+- name: Setting Cassandra Home | /etc/profile.d/cassandra.sh
+  blockinfile:
+    path: /etc/profile.d/cassandra.sh
+    mode: 0775
+    group: root
+    owner: root
+    create: true
+    block: |
+      export CASSANDRA_HOME={{ cassandraInstallDir }}/cassandra
+      export PATH=$CASSANDRA_HOME/cassandra/bin:$PATH

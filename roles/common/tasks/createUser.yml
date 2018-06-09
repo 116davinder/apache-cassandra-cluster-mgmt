@@ -11,5 +11,4 @@
     name: "{{ cassandraUser }}"
     comment: Cassandra Default User
     uid: "{{ cassandraUserId }}"
-    gid: "{{ cassandraGroupId }}"
     group: "{{ cassandraGroup }}"

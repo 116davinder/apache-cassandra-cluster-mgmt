@@ -1,0 +1,25 @@
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=Cassandra
+After=network.target
+
+[Service]
+PIDFile={{ cassandraPidFile }}
+User={{ cassandraUser }}
+Group={{ cassandraGroup }}
+ExecStart={{ cassandraInstallDir }}/cassandra/cassandra -f -p {{ cassandraPidFile }}
+ExecStop=pgrep -u {{ cassandraUser }} -f cassandra | xargs kill -9
+StandardOutput=journal
+StandardError=journal
+LimitNOFILE=100000
+LimitMEMLOCK=infinity
+LimitNPROC=32768
+LimitAS=infinity
+Restart=always
+Environment=CASSANDRA_HOME={{ cassandraInstallDir }}/cassandra
+Environment=PATH=$PATH:{{ cassandraInstallDir }}/cassandra/bin
+
+[Install]
+WantedBy=multi-user.target

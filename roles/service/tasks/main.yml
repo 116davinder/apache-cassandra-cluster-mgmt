@@ -1,0 +1,13 @@
+---
+
+- name: Creating Service File | Cassandra
+  template:
+    src: service.j2
+    dest: /usr/lib/systemd/system/cassandra.service
+
+- name: Starting Cassandra Service
+  systemd:
+    name: cassandra
+    state: started
+    enabled: true
+    daemon_reload: true
