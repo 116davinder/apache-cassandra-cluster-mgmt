@@ -1,20 +1,19 @@
 ---
 
-- name: Check if Java Install is already installed
+- name: checking java installation
   raw: which java
   register: javaRequired
   ignore_errors: true
 
-- block:
-
-    - include_tasks: install.yml
-
-    - name: Checking if Java_home setting is needed
-      command:  /bin/bash -l -c "echo $JAVA_HOME"
-      register: checkJavaHome
-
-    - include_tasks: javaHome.yml
-      when: checkJavaHome.stdout == ''
-
+- include_tasks: install.yml
   when: javaRequired is failed
+
+- name: Checking if Java_home setting is needed
+  command:  /bin/bash -l -c "echo $JAVA_HOME"
+  register: checkJavaHome
+
+- include_tasks: javaHome.yml
+  when: checkJavaHome.stdout == ''
+
+  
 

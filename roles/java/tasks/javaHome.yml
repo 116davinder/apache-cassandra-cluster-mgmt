@@ -5,11 +5,12 @@
   register: javaHomeLocation
 
 - name: Setting Java Home | /etc/profile.d/java.sh
-  create: true
-  dest: /etc/profile.d/java.sh
-  mode: 0775
-  group: root
-  owner: root
-  blockinfile:  |
-    export JAVA_HOME={{ javaHomeLocation.stdout }}
-    export PATH=$PATH:{{ javaHomeLocation.stdout }}/bin
+  blockinfile:
+    path: /etc/profile.d/java.sh
+    mode: 0775
+    group: root
+    owner: root
+    create: true
+    block: |
+      export JAVA_HOME={{ javaHomeLocation.stdout }}
+      export PATH=$PATH:{{ javaHomeLocation.stdout }}/bin
