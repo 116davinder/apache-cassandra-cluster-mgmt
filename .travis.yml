@@ -1,0 +1,14 @@
+---
+language: python
+python: "2.7"
+
+os:
+  - linux
+
+install:
+  - pip install ansible-lint
+
+script:
+  # Check the role/playbook's syntax.
+  - "ansible-lint *.yml"
+  - "ansible-lint adhoc_tasks/*.yml"
