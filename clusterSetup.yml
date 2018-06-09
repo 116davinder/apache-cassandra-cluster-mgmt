@@ -3,7 +3,7 @@
 - hosts: clusterNodes
   gather_facts: true
   pre_tasks:
-  
+
     - name: Including system upgrade role
       import_role:
         name: systemUpgrade
