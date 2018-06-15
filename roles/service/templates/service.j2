@@ -1,25 +1,37 @@
-[Install]
-WantedBy=multi-user.target
-
 [Unit]
 Description=Cassandra
 After=network.target
 
 [Service]
+Type=forking
 PIDFile={{ cassandraPidFile }}
+
 User={{ cassandraUser }}
 Group={{ cassandraGroup }}
-ExecStart={{ cassandraInstallDir }}/cassandra/cassandra -f -p {{ cassandraPidFile }}
+
+ExecStartPre=- /sbin/swapoff -a
+WorkingDirectory={{ cassandraInstallDir }}/cassandra
+ExecStart={{ cassandraInstallDir }}/cassandra/bin/cassandra -f -p {{ cassandraPidFile }}
 ExecStop=pgrep -u {{ cassandraUser }} -f cassandra | xargs kill -9
+
 StandardOutput=journal
 StandardError=journal
 LimitNOFILE=100000
 LimitMEMLOCK=infinity
 LimitNPROC=32768
 LimitAS=infinity
-Restart=always
+Restart=on-failure
+RestartSec=60
+TimeoutStopSec=60
+TimeoutStartSec=60
+
 Environment=CASSANDRA_HOME={{ cassandraInstallDir }}/cassandra
-Environment=PATH=$PATH:{{ cassandraInstallDir }}/cassandra/bin
+{% if checkJavaHome %}
+Environment=JAVA_HOME={{ checkJavaHome.stdout }}
+{% else %}
+Environment=JAVA_HOME={{ javaHomeLocation.stdout }}
+{% endif %}
+Environment=PATH=$PATH:{{ cassandraInstallDir }}/bin:$JAVA_HOME/bin
 
 [Install]
 WantedBy=multi-user.target

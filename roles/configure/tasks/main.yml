@@ -9,3 +9,4 @@
     - cassandra-topology.properties
     - cassandra.yaml
     - jvm.options
+    - logback.xml

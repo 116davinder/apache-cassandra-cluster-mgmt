@@ -7,7 +7,7 @@
 
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
-cluster_name: '{{ cassandraClusterName }}'
+cluster_name: {{ cassandraClusterName }}
 
 # This defines the number of tokens randomly assigned to this node on the ring
 # The more tokens, relative to other nodes, the larger the proportion of data
@@ -187,12 +187,14 @@ partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 # will spread data evenly across them, subject to the granularity of
 # the configured compaction strategy.
 # If not set, the default directory is $CASSANDRA_HOME/data/data.
-data_file_directories: {{ cassandraDataDir }}/data
+data_file_directories:
+  - {{ cassandraDataDir }}/data
 
 # commit log.  when running on magnetic HDD, this should be a
 # separate spindle than the data directories.
 # If not set, the default directory is $CASSANDRA_HOME/data/commitlog.
-commitlog_directory: {{ cassandraDataDir }}/commitlog
+commitlog_directory:
+  - {{ cassandraDataDir }}/commitlog
 
 # Enable / disable CDC functionality on a per-node basis. This modifies the logic used
 # for write path allocation rejection (standard: never reject. cdc: reject Mutation
@@ -262,7 +264,7 @@ commit_failure_policy: stop
 # Constantly re-preparing statements is a performance penalty.
 #
 # Default value ("auto") is 1/256th of the heap or 10MB, whichever is greater
-prepared_statements_cache_size_mb:
+#prepared_statements_cache_size_mb:
 
 # Maximum size of the Thrift prepared statement cache
 #
@@ -271,7 +273,7 @@ prepared_statements_cache_size_mb:
 # See description of 'prepared_statements_cache_size_mb' above for more information.
 #
 # Default value ("auto") is 1/256th of the heap or 10MB, whichever is greater
-thrift_prepared_statements_cache_size_mb:
+#thrift_prepared_statements_cache_size_mb:
 
 # Maximum size of the key cache in memory.
 #
@@ -285,7 +287,7 @@ thrift_prepared_statements_cache_size_mb:
 # NOTE: if you reduce the size, you may not get you hottest keys loaded on startup.
 #
 # Default value is empty to make it "auto" (min(5% of Heap (in MB), 100MB)). Set to 0 to disable key cache.
-key_cache_size_in_mb:
+#key_cache_size_in_mb:
 
 # Duration in seconds after which Cassandra should
 # save the key cache. Caches are saved to saved_caches_directory as
@@ -349,7 +351,7 @@ row_cache_save_period: 0
 #
 # Default value is empty to make it "auto" (min(2.5% of Heap (in MB), 50MB)). Set to 0 to disable counter cache.
 # NOTE: if you perform counter deletes and rely on low gcgs, you should disable the counter cache.
-counter_cache_size_in_mb:
+#counter_cache_size_in_mb:
 
 # Duration in seconds after which Cassandra should
 # save the counter cache (keys only). Caches are saved to saved_caches_directory as
@@ -421,7 +423,8 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "127.0.0.1"
+          # Ex: - seeds: "127.0.0.1"
+          - seeds: {% for server in groups["clusterSeedNodes"] %}{% if not loop.last %}"{{ server }}",{% else %}"{{ server }}"{% endif %}{% endfor %}
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
@@ -558,7 +561,7 @@ memtable_allocation_type: heap_buffers
 # shrink their index summaries in order to meet this limit.  However, this
 # is a best-effort process. In extreme conditions Cassandra may need to use
 # more than this amount of memory.
-index_summary_capacity_in_mb:
+#index_summary_capacity_in_mb:
 
 # How frequently index summaries should be resampled.  This is done
 # periodically to redistribute memory from the fixed-size pool to sstables
@@ -595,7 +598,7 @@ ssl_storage_port: 7001
 #
 # Setting listen_address to 0.0.0.0 is always wrong.
 #
-listen_address: localhost
+#listen_address: 0.0.0.0
 
 # Set listen_address OR listen_interface, not both. Interfaces must correspond
 # to a single address, IP aliasing is not supported.
@@ -621,7 +624,7 @@ listen_address: localhost
 
 # Internode authentication backend, implementing IInternodeAuthenticator;
 # used to allow/disallow connections from peer nodes.
-# internode_authenticator: org.apache.cassandra.auth.AllowAllInternodeAuthenticator
+internode_authenticator: org.apache.cassandra.auth.AllowAllInternodeAuthenticator
 
 # Whether to start the native transport server.
 # Please note that the address on which the native transport is bound is the
@@ -672,7 +675,7 @@ start_rpc: false
 # set broadcast_rpc_address to a value other than 0.0.0.0.
 #
 # For security reasons, you should not expose this port to the internet.  Firewall it if needed.
-rpc_address: localhost
+#rpc_address: localhost
 
 # Set rpc_address OR rpc_interface, not both. Interfaces must correspond
 # to a single address, IP aliasing is not supported.
@@ -1070,7 +1073,7 @@ client_encryption_options:
 #
 # none
 #   nothing is compressed.
-internode_compression: dc
+internode_compression: all
 
 # Enable or disable tcp_nodelay for inter-dc communication.
 # Disabling it will result in larger (but fewer) network packets being sent,
