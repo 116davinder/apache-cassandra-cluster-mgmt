@@ -18,3 +18,4 @@
     - "{{ cassandraDataDir }}/commitlog"
     - "{{ cassandraDataDir }}/saved_caches"
     - "{{ cassandraPidDir }}"
+    - "{{ cassandraLogDir }}"

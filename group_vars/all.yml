@@ -11,6 +11,7 @@ cassandraUserId: 5000
 
 cassandraInstallDir: /opt
 cassandraDataDir: /opt/cassandra-data
+cassandraLogDir: /opt/cassandra-logs
 
 cassandraVersion: 3.11.2
 downloadRegion: eu          # eu/us
