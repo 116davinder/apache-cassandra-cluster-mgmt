@@ -1,0 +1,6 @@
+parseable: true
+quiet: false
+use_default_rules: true
+verbosity: 2
+skip_ansible_lint:
+  - ANSIBLE0012
