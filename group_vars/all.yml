@@ -4,6 +4,8 @@ systemUpgradeRequired: false
 
 javaVersion: 8
 
+useSystemFirewall: false
+
 cassandraGroup: cassandra
 cassandraUser: cassandra
 cassandraGroupId: 5000
@@ -12,6 +14,11 @@ cassandraUserId: 5000
 cassandraInstallDir: /opt
 cassandraDataDir: /opt/cassandra-data
 cassandraLogDir: /opt/cassandra-logs
+
+cassandraAutoBootstrap: false
+cassandraEndpointSnitch: GossipingPropertyFileSnitch # or SimpleSnitch
+cassandraDc: dc1
+cassandraRack: rack1
 
 cassandraVersion: 3.11.2
 downloadRegion: eu          # eu/us

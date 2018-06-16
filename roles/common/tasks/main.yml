@@ -8,3 +8,8 @@
 
 - name: Create cassandra dir structure
   include_tasks: createDirStructure.yml
+
+- name: Disable firewall
+  include_tasks: disableFirewall.yml
+  ignore_errors: true
+  when: not useSystemFirewall

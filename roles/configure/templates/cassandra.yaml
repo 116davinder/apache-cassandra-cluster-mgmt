@@ -4,7 +4,7 @@
 #   See http://wiki.apache.org/cassandra/StorageConfiguration for
 #   full explanations of configuration directives
 # /NOTE
-
+auto_bootstrap: {{ cassandraAutoBootstrap }}
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
 cluster_name: {{ cassandraClusterName }}
@@ -948,7 +948,7 @@ cross_node_timeout: false
 #
 # You can use a custom Snitch by setting this to the full class name
 # of the snitch, which will be assumed to be on your classpath.
-endpoint_snitch: SimpleSnitch
+endpoint_snitch: {{ cassandraEndpointSnitch }}
 
 # controls how often to perform the more expensive part of host score
 # calculation
