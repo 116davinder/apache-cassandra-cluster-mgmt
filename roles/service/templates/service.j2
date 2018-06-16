@@ -9,7 +9,6 @@ PIDFile={{ cassandraPidFile }}
 User={{ cassandraUser }}
 Group={{ cassandraGroup }}
 
-ExecStartPre=- /sbin/swapoff -a
 WorkingDirectory={{ cassandraInstallDir }}/cassandra
 ExecStart={{ cassandraInstallDir }}/cassandra/bin/cassandra -f -p {{ cassandraPidFile }}
 ExecStop=pgrep -u {{ cassandraUser }} -f cassandra | xargs kill -9
@@ -31,7 +30,7 @@ Environment=JAVA_HOME={{ checkJavaHome.stdout }}
 {% else %}
 Environment=JAVA_HOME={{ javaHomeLocation.stdout }}
 {% endif %}
-Environment=PATH=$PATH:{{ cassandraInstallDir }}/bin:$JAVA_HOME/bin
+Environment=PATH=$PATH:{{ cassandraInstallDir }}/cassandra/bin:$JAVA_HOME/bin
 
 [Install]
 WantedBy=multi-user.target
