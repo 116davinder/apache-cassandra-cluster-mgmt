@@ -15,10 +15,16 @@ cassandraInstallDir: /opt
 cassandraDataDir: /opt/cassandra-data
 cassandraLogDir: /opt/cassandra-logs
 
-cassandraAutoBootstrap: false
-cassandraEndpointSnitch: GossipingPropertyFileSnitch # or SimpleSnitch
+cassandraEndpointSnitch: GossipingPropertyFileSnitch # or SimpleSnitch/Ec2MultiRegionSnitch/GossipingPropertyFileSnitch
 cassandraDc: dc1
 cassandraRack: rack1
+
+cassandraXms: 256m
+cassandraXmx: "{{ cassandraXms }}"
+cassandraXmn: 64m
+cassandraXss: 256k
+cassandraRpcMinThreads: 4
+cassandraRpcMaxThreads: 250
 
 cassandraVersion: 3.11.2
 downloadRegion: eu          # eu/us

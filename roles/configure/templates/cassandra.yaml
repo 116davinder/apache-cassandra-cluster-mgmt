@@ -4,7 +4,7 @@
 #   See http://wiki.apache.org/cassandra/StorageConfiguration for
 #   full explanations of configuration directives
 # /NOTE
-auto_bootstrap: {{ cassandraAutoBootstrap }}
+auto_bootstrap: false
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
 cluster_name: {{ cassandraClusterName }}
@@ -598,7 +598,7 @@ ssl_storage_port: 7001
 #
 # Setting listen_address to 0.0.0.0 is always wrong.
 #
-#listen_address: 0.0.0.0
+listen_address: {{ ansible_host }}
 
 # Set listen_address OR listen_interface, not both. Interfaces must correspond
 # to a single address, IP aliasing is not supported.
@@ -612,7 +612,7 @@ ssl_storage_port: 7001
 
 # Address to broadcast to other Cassandra nodes
 # Leaving this blank will set it to the same value as listen_address
-# broadcast_address: 1.2.3.4
+broadcast_address: {{ ansible_host }}
 
 # When using multiple physical network interfaces, set this
 # to true to listen on broadcast_address in addition to
@@ -620,7 +620,7 @@ ssl_storage_port: 7001
 # interfaces.
 # Ignore this property if the network configuration automatically
 # routes  between the public and private networks such as EC2.
-# listen_on_broadcast_address: false
+listen_on_broadcast_address: true
 
 # Internode authentication backend, implementing IInternodeAuthenticator;
 # used to allow/disallow connections from peer nodes.
@@ -730,9 +730,9 @@ rpc_server_type: sync
 # The default is unlimited and thus provides no protection against clients overwhelming the server. You are
 # encouraged to set a maximum that makes sense for you in production, but do keep in mind that
 # rpc_max_threads represents the maximum number of client requests this server may execute concurrently.
-#
-# rpc_min_threads: 16
-# rpc_max_threads: 2048
+
+rpc_min_threads: {{ cassandraRpcMinThreads | default(16) }}
+rpc_max_threads: {{ cassandraRpcMaxThreads | default(2048) }}
 
 # uncomment to set socket buffer sizes on rpc connections
 # rpc_send_buff_size_in_bytes:
