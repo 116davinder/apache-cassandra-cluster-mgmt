@@ -11,7 +11,7 @@ Group={{ cassandraGroup }}
 
 WorkingDirectory={{ cassandraInstallDir }}/cassandra
 ExecStart={{ cassandraInstallDir }}/cassandra/bin/cassandra -f -p {{ cassandraPidFile }}
-ExecStop=pgrep -u {{ cassandraUser }} -f cassandra | xargs kill -9
+ExecStop=/bin/pgrep -u {{ cassandraUser }} -f cassandra | /bin/xargs /bin/kill -9
 
 StandardOutput=journal
 StandardError=journal
@@ -25,12 +25,7 @@ TimeoutStopSec=60
 TimeoutStartSec=60
 
 Environment=CASSANDRA_HOME={{ cassandraInstallDir }}/cassandra
-{% if checkJavaHome %}
-Environment=JAVA_HOME={{ checkJavaHome.stdout }}
-{% else %}
-Environment=JAVA_HOME={{ javaHomeLocation.stdout }}
-{% endif %}
-Environment=PATH=$PATH:{{ cassandraInstallDir }}/cassandra/bin:$JAVA_HOME/bin
+Environment=CASSANDRA_CONF={{ cassandraInstallDir }}/cassandra/conf
 
 [Install]
 WantedBy=multi-user.target
