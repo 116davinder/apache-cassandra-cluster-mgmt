@@ -1,0 +1,13 @@
+---
+
+- hosts:
+  - clusterSeedNodes
+  - clusterNodes:!clusterSeedNodes
+  serial: 1
+  tasks:
+    - name: including restart tasks
+      import_role:
+        name: service
+        tasks_from: cassandraState
+      vars:
+        cassandraState: restarted
