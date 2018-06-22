@@ -9,6 +9,9 @@
 - name: Create cassandra dir structure
   include_tasks: createDirStructure.yml
 
+- name: System tuning tasks
+  include_tasks: systemTuning.yml
+
 - name: Disable firewall
   include_tasks: disableFirewall.yml
   ignore_errors: true

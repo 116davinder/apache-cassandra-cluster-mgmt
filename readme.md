@@ -3,6 +3,9 @@
 ### OS support
 * any os with systemd
 
+### Recommended Settings
+* https://docs.datastax.com/en/dse/6.0/dse-admin/datastax_enterprise/config/configRecommendedSettings.html
+
 ### References
 * http://cassandra.apache.org/download/
 * https://www.linode.com/docs/databases/cassandra/deploy-scalable-cassandra/

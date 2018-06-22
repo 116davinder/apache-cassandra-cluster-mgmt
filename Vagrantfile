@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 ##################### Setting CPU and Memory for All machines
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.memory = "512"
+    vb.memory = "1200"
     vb.cpus =  1
   end
 
