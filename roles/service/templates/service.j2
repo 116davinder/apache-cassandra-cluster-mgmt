@@ -3,7 +3,7 @@ Description=Cassandra
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 PIDFile={{ cassandraPidFile }}
 
 User={{ cassandraUser }}
@@ -11,14 +11,6 @@ Group={{ cassandraGroup }}
 
 WorkingDirectory={{ cassandraInstallDir }}/cassandra
 ExecStart={{ cassandraInstallDir }}/cassandra/bin/cassandra -f -p {{ cassandraPidFile }}
-ExecStop=/bin/pgrep -u {{ cassandraUser }} -f cassandra | /bin/xargs /bin/kill -9
-
-StandardOutput=journal
-StandardError=journal
-LimitNOFILE=100000
-LimitMEMLOCK=infinity
-LimitNPROC=32768
-LimitAS=infinity
 
 Environment=CASSANDRA_HOME={{ cassandraInstallDir }}/cassandra
 Environment=CASSANDRA_CONF={{ cassandraInstallDir }}/cassandra/conf
