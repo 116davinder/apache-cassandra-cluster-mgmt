@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
     controller.vm.hostname = "controller"
     controller.vm.network :private_network, ip: "192.168.56.100"
     controller.vm.provision "shell",
-      inline: "sudo yum install epel-release -y && sudo yum install python-pip -y && sudo pip install ansible"
+      inline: "sudo yum install epel-release -y && sudo yum install python-pip -y && sudo pip install ansible-lint"
   end
 
 ######################### Cluster Nodes
@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
   end
 
 ####################### Sharing Folder with machines
-  config.vm.synced_folder ".", "/home/vagrant/projects", type: "nfs"
+  config.vm.synced_folder ".", "/home/vagrant", type: "nfs"
   config.ssh.insert_key = false
 
 end

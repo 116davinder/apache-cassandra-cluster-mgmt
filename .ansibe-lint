@@ -1,5 +1,0 @@
-parseable: true
-quiet: false
-verbosity: 2
-skip_ansible_lint:
-  - ANSIBLE0012
