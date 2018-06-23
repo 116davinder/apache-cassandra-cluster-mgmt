@@ -1,5 +1,5 @@
-- [x] start fresh cluster
-- [x] restart cluster using adhoc tasks
+- [x] start fresh cluster from scratch
+- [x] rolling restart cluster of cluster
 - [] add new data node to cluster
 - [] remove data node from cluster
 - [] delete old versions
