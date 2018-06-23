@@ -3,6 +3,7 @@
 - [] add new data node to cluster
 - [] remove data node from cluster
 - [] delete old versions
+- [] migrate all files from adhoc folder to main folder
 - [] change logging to different level and restart that node
 - [] add firewall rules for ufw or firewalld or iptables
 - [] add new seed node to cluster

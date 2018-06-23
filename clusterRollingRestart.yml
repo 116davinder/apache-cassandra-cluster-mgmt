@@ -1,7 +1,7 @@
 ---
 
 - hosts: clusterSeedNodes:clusterNodes
-  gather_facts: false
+  gather_facts: true
   serial: 1
   tasks:
     - name: including restart tasks

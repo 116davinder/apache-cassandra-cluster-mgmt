@@ -3,14 +3,8 @@
 ### To Run start new cluster
 ```ansible-playbook -i inventory/cluster.ini clusterSetup.yml```
 
-### To Run adhoc tasks playbooks
-* Export ansible.cfg path
-
-    ```ANSIBLE_CONFIG=<apache-cassandra-cluster-mgmt>/ansible.cfg```
-
-* Run required playbook
-
-    ```ansible-playbook -i inventory/cluster.ini adhoc_tasks/clusterRollingRestart.yml```
+### To do rolling restart of full cluster
+```ansible-playbook -i inventory/cluster.ini clusterRollingRestart.yml```
 
 ### OS support
 * any os with systemd
