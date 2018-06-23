@@ -19,7 +19,7 @@ cassandraEndpointSnitch: GossipingPropertyFileSnitch # or SimpleSnitch/Ec2MultiR
 cassandraDc: dc1
 cassandraRack: rack1
 
-cassandraXms: 1024m
+cassandraXms: 512m
 cassandraXmx: "{{ cassandraXms }}"
 cassandraXmn: 64m
 cassandraXss: 256k
