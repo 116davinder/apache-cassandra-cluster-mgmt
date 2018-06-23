@@ -1,3 +1,9 @@
-* delete old versions
-* change logging to different level and restart that node
-* add firewall rules for ufw or firewalld or iptables
+- [x] start fresh cluster
+- [x] restart cluster using adhoc tasks
+- [] add new data node to cluster
+- [] remove data node from cluster
+- [] delete old versions
+- [] change logging to different level and restart that node
+- [] add firewall rules for ufw or firewalld or iptables
+- [] add new seed node to cluster
+- [] remove seed node from cluster
