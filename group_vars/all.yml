@@ -25,6 +25,8 @@ cassandraXmn: 64m
 cassandraXss: 256k
 cassandraRpcMinThreads: 4
 cassandraRpcMaxThreads: 250
+cassandraStoragePort: 7000
+cassandraNativeTransportPort: 9042
 
 cassandraVersion: 3.11.2
 downloadRegion: eu          # eu/us
