@@ -4,4 +4,3 @@
   template:
     src: service.j2
     dest: /usr/lib/systemd/system/cassandra.service
-  notify: Restarting Cassandra Service

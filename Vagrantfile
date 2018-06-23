@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
   end
 
 ####################### Sharing Folder with machines
-  config.vm.synced_folder ".", "/home/vagrant", type: "nfs"
+  config.vm.synced_folder ".", "/home/vagrant/projects", type: "nfs"
   config.ssh.insert_key = false
 
 end
