@@ -1,8 +1,6 @@
 ---
 
-- hosts:
-    - clusterNodes
-    - clusterSeedNodes:!clusterNodes
+- hosts: clusterNodes:clusterSeedNodes
   gather_facts: true
   pre_tasks:
     - name: Including system upgrade role
@@ -20,9 +18,7 @@
     - configure
     - service
 
-- hosts:
-    - clusterNodes
-    - clusterSeedNodes:!clusterNodes
+- hosts: clusterSeedNodes:clusterNodes
   gather_facts: false
   serial: 1
   tasks:
