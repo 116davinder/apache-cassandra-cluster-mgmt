@@ -7,18 +7,22 @@
     enabled: true
     daemon_reload: true
 
-- name: Waiting for cassandra storage port to come live | {{ cassandraStoragePort }}
-  wait_for:
-    host: "{{ ansible_host }}"
-    port: "{{ cassandraStoragePort }}"
-    state: started
-    timeout: 300
-    delay: 10
+- block:
 
-- name: Waiting for cassandra transport port to come live | {{ cassandraNativeTransportPort }}
-  wait_for:
-    host: "{{ ansible_host }}"
-    port: "{{ cassandraNativeTransportPort }}"
-    state: started
-    timeout: 300
-    delay: 10
+  - name: Waiting for cassandra storage port to come live | {{ cassandraStoragePort }}
+    wait_for:
+      host: "{{ ansible_host }}"
+      port: "{{ cassandraStoragePort }}"
+      state: started
+      timeout: 300
+      delay: 10
+
+  - name: Waiting for cassandra transport port to come live | {{ cassandraNativeTransportPort }}
+    wait_for:
+      host: "{{ ansible_host }}"
+      port: "{{ cassandraNativeTransportPort }}"
+      state: started
+      timeout: 300
+      delay: 10
+
+  when: "cassandraState != 'stopped'"
