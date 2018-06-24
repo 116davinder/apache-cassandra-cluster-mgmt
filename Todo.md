@@ -1,6 +1,6 @@
 - [x] start fresh cluster from scratch
 - [x] rolling restart cluster of cluster
-- [] add new data node to cluster
+- [x] add new data node to cluster
 - [] remove data node from cluster
 - [] delete old versions
 - [] migrate all files from adhoc folder to main folder

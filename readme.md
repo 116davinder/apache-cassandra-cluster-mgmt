@@ -6,6 +6,9 @@
 ### To do rolling restart of full cluster
 ```ansible-playbook -i inventory/cluster.ini clusterRollingRestart.yml```
 
+### To add node to running cluster
+```ansible-playbook -i inventory/cluster.ini clusterAddNodes.yml```
+
 ### OS support
 * any os with systemd
 

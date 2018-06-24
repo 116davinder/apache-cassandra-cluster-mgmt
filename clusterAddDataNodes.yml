@@ -1,1 +1,27 @@
 ---
+
+- hosts: clusterAddNodes
+  gather_facts: true
+  pre_tasks:
+    - name: Including system upgrade role
+      import_role:
+        name: systemUpgrade
+      when: systemUpgradeRequired
+
+    - name: Including java role
+      import_role:
+        name: java
+
+  roles:
+    - common
+    - install
+    - configure
+    - service
+
+  post_tasks:
+    - name: Starting all additional nodes
+      import_role:
+        name: service
+        tasks_from: cassandraState
+      vars:
+        cassandraState: started
