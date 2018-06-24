@@ -1,0 +1,31 @@
+---
+
+- name: decomission node from cluster
+  command: "{{ cassandraInstallDir }}/cassandra/bin/nodetool decommission"
+  ignore_errors: true
+
+# TODO: need more testing here
+- name: status check for decomission node
+  shell: "{{ cassandraInstallDir }}/cassandra/bin/nodetool status | grep -w '{{ ansible_host }}'"
+  changed_when: false
+  register: decomissionNodeStatus
+  failed_when: decomissionNodeStatus.rc == 0 
+  until: decomissionNodeStatus.rc == 1
+  retries: 30
+  delay: 10
+
+- name: Stoping cassandra service
+  import_role:
+    name: service
+    tasks_from: cassandraState
+  vars:
+    cassandraState: stopped
+
+- name: Removing all dirs related to installation
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ cassandraInstallDir }}"
+    - "{{ cassandraDataDir }}"
+    - "{{ cassandraLogDir }}"
