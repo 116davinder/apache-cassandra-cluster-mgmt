@@ -3,7 +3,7 @@
 - [x] add new data node to cluster
 - [x] remove data node from cluster
 - [] delete old versions
-- [] migrate all files from adhoc folder to main folder
+- [x] migrate all files from adhoc folder to main folder
 - [x] change logging to different level and restart that node
 - [x] update jvm properties only like logging properties
 - [] add firewall rules for ufw or firewalld or iptables
