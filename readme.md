@@ -29,6 +29,22 @@ and respective node will be restarted as well.
 ### OS support
 * any os with systemd
 
+### Tested Ansible Version
+```
+ansible 2.5.5
+  config file = None
+  configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.5 (default, Apr 11 2018, 07:36:10) [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+```
+
+### Tested OS Version
+```
+$cat /etc/redhat-release
+CentOS Linux release 7.5.1804 (Core)
+```
+
 ### Recommended Settings
 * https://docs.datastax.com/en/dse/6.0/dse-admin/datastax_enterprise/config/configRecommendedSettings.html
 
