@@ -3,6 +3,7 @@
 systemUpgradeRequired: false
 
 javaVersion: 8
+updateJava: false # only when you need to update java version
 
 useSystemFirewall: false
 

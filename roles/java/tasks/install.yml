@@ -1,9 +1,13 @@
 ---
+- name: Setting java update var if required
+  set_fact:
+    javaUpdateState: latest
+  when: updateJava
 
 - name: Install Openjdk | {{ javaVersion }} | RedHat
   yum:
     name: "{{ item }}"
-    state: present
+    state: "{{ javaUpdateState | default(present) }}"
     update_cache: true
   loop:
     - "java-1.{{ javaVersion }}.0-openjdk"
@@ -13,7 +17,7 @@
 - name: Install Openjdk | {{ javaVersion }} | Debian
   apt:
     name: "{{ item }}"
-    state: present
+    state: "{{ javaUpdateState | default(present) }}"
     update_cache: true
   loop:
     - "openjdk-{{ javaVersion }}-jdk"
