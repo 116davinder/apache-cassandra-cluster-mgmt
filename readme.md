@@ -12,6 +12,20 @@
 ### To remove data node to running cluster
 ```ansible-playbook -i inventory/cluster.ini clusterRemoveDataNodes.yml```
 
+### To update logging properties to running cluster
+Update Required vars in ```group_vars/all.yml``` .
+
+```ansible-playbook -i inventory/cluster.ini clusterLogging.yml```
+
+### To update jvm properties to running cluster
+Update Required vars in ```group_vars/all.yml``` .
+
+```ansible-playbook -i inventory/cluster.ini clusterJvmConfigs.yml```
+
+### Note*
+* all properties update like ```logging/jvm``` will be done in rolling update fashion
+and respective node will be restarted as well.
+
 ### OS support
 * any os with systemd
 

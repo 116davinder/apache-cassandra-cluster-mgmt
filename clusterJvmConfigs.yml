@@ -1,0 +1,18 @@
+---
+
+- hosts: clusterNodes
+  gather_facts: true
+  serial: 1
+  tasks:
+    - include_role:
+        name: configure
+        tasks_from: dynamicConfigs.yml
+      vars:
+        - cassandraConfigFile: jvm.options
+  
+    - name: Restarting all nodes
+      import_role:
+        name: service
+        tasks_from: cassandraState
+      vars:
+        cassandraState: restarted

@@ -5,7 +5,7 @@
 - [] delete old versions
 - [] migrate all files from adhoc folder to main folder
 - [x] change logging to different level and restart that node
-- [] update jvm properties only like logging properties
+- [x] update jvm properties only like logging properties
 - [] add firewall rules for ufw or firewalld or iptables
 - [] add new seed node to cluster
 - [] remove seed node from cluster
