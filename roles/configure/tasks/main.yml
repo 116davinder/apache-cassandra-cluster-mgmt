@@ -1,9 +1,11 @@
 ---
 
 - name: Creating cassandra configurations
-  template:
-    src: "{{ item }}"
-    dest: "{{ cassandraInstallDir }}/cassandra/conf/{{ item }}"
+  include_role:
+      name: configure
+      tasks_from: dynamicConfigs.yml
+  vars:
+    - cassandraConfigFile: "{{ item }}"
   loop:
     - cassandra-rackdc.properties
     - cassandra-topology.properties

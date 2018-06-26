@@ -1,0 +1,5 @@
+---
+- name: Creating cassandra configurations | {{ cassandraConfigFile }}
+  template:
+    src: "{{ cassandraConfigFile }}"
+    dest: "{{ cassandraInstallDir }}/cassandra/conf/{{ cassandraConfigFile }}"

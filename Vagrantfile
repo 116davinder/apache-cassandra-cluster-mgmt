@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   end
 
 ######################### Cluster Nodes
-  cluster_nodes=3
+  cluster_nodes=2
 
     (1..cluster_nodes).each do |i|
       config.vm.define "cassandra-#{i}" do |node|
