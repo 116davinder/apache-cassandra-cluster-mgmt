@@ -3,7 +3,7 @@
 - hosts: clusterNodes:clusterSeedNodes:clusterAddNodes
   gather_facts: false
   tasks:
-    - name: Removing Old Cassandra files | {{ cassandraInstallDir }}/{{ cassandraOldVersion }}
+    - name: Removing Old Cassandra files | {{ cassandraInstallDir }}/apache-cassandra-{{ cassandraOldVersion }}
       file:
         path: "{{ cassandraInstallDir }}/apache-cassandra-{{ cassandraOldVersion }}"
         state: absent
