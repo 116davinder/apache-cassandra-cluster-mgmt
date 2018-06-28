@@ -22,6 +22,11 @@ Update Required vars in ```group_vars/all.yml``` .
 
 ```ansible-playbook -i inventory/cluster.ini clusterJvmConfigs.yml```
 
+### To remove old cassandra versions
+Update ```cassandraOldVersion``` var in ```group_vars/all.yml``` .
+
+```ansible-playbook -i inventory/cluster.ini clusterRemoveOldVersions.yml```
+
 ### Note*
 * all properties update like ```logging/jvm``` will be done in rolling update fashion
 and respective node will be restarted as well.

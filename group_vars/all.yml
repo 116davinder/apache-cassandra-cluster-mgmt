@@ -30,6 +30,8 @@ cassandraStoragePort: 7000
 cassandraNativeTransportPort: 9042
 
 cassandraVersion: 3.11.2
+cassandraOldVersion: 3.11.1 # only used in cassandraRomveOldVersions.yml
+
 downloadRegion: eu          # eu/us
 cassandraUrl: "http://www-{{ downloadRegion }}.apache.org/dist/cassandra/{{ cassandraVersion }}/apache-cassandra-{{ cassandraVersion }}-bin.tar.gz"
 
