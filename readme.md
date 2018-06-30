@@ -36,7 +36,7 @@ and respective node will be restarted as well.
 
 ### Tested Ansible Version
 ```
-ansible 2.5.5
+ansible 2.6.0
   config file = None
   configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python2.7/site-packages/ansible
