@@ -16,6 +16,9 @@ cassandraInstallDir: /opt
 cassandraDataDir: /opt/cassandra-data
 cassandraLogDir: /opt/cassandra-logs
 
+cassandraAutoSnapshot: true
+cassandraIncrementalBackups: {{ cassandraAutoSnapshot }}     # set false if alternate way is there
+
 cassandraEndpointSnitch: GossipingPropertyFileSnitch # or SimpleSnitch/Ec2MultiRegionSnitch/GossipingPropertyFileSnitch
 cassandraDc: dc1
 cassandraRack: rack1
