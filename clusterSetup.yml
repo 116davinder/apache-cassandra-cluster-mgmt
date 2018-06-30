@@ -32,4 +32,5 @@
         name: service
         tasks_from: cassandraState
       vars:
+        cassandraServiceName: cassandra
         cassandraState: started

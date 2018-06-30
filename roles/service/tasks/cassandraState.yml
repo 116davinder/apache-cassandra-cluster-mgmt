@@ -1,28 +1,14 @@
 ---
 
-- name: Cassandra Service | {{ cassandraState }}
+- name: "{{ cassandraServiceName }} Service | {{ cassandraState }}"
   systemd:
-    name: cassandra
+    name: "{{ cassandraServiceName }}"
     state: "{{ cassandraState }}"
     enabled: true
     daemon_reload: true
 
-- block:
-
-  - name: Waiting for cassandra storage port to come live | {{ cassandraStoragePort }}
-    wait_for:
-      host: "{{ ansible_host }}"
-      port: "{{ cassandraStoragePort }}"
-      state: started
-      timeout: 300
-      delay: 10
-
-  - name: Waiting for cassandra transport port to come live | {{ cassandraNativeTransportPort }}
-    wait_for:
-      host: "{{ ansible_host }}"
-      port: "{{ cassandraNativeTransportPort }}"
-      state: started
-      timeout: 300
-      delay: 10
-
-  when: "cassandraState != 'stopped'"
+- name: Cassandra Port Status Check
+  include_tasks: cassandraPortChecking.yml
+  when:
+    - "cassandraState != 'stopped'"
+    - "cassandraServiceName == 'cassandra'"
