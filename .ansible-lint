@@ -1,4 +1,5 @@
 skip_list:
   - ANSIBLE0002
+  - ANSIBLE0007
   - ANSIBLE0010
   - ANSIBLE0012
