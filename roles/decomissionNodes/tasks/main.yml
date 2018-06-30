@@ -21,11 +21,14 @@
   vars:
     cassandraState: stopped
 
-- name: Removing all dirs related to installation
+- name: Removing all installation files
+  command: "/bin/rm -rf {{ cassandraInstallDir }}/apache-cassandra-*"
+
+- name: Removing data & log dirs related to installation
   file:
     path: "{{ item }}"
     state: absent
   loop:
-    - "{{ cassandraInstallDir }}"
+    - "{{ cassandraInstallDir }}/cassandra"
     - "{{ cassandraDataDir }}"
     - "{{ cassandraLogDir }}"
