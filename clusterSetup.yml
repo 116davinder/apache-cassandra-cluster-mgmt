@@ -1,5 +1,10 @@
 ---
 
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - initialClusterChecks
+
 - hosts: clusterNodes:clusterSeedNodes
   gather_facts: true
   pre_tasks:

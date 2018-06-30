@@ -1,3 +1,5 @@
+#### Cluster Setup
+
 - [x] start fresh cluster from scratch
 - [x] rolling restart cluster of cluster
 - [x] add new data node to cluster
@@ -6,6 +8,7 @@
 - [x] migrate all files from adhoc folder to main folder
 - [x] change logging to different level and restart that node
 - [x] update jvm properties only like logging properties
+- [x] add odd count test for seed nodes
 - [] install opscenter
 - [] backup and restore to separate partitions/disks playbooks
 - [] add repair crons on each cassandra node

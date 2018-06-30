@@ -1,0 +1,15 @@
+---
+
+- name: Making count of cassandra seed nodes
+  set_fact:
+    totalSeedNodes: "{{ groups['clusterSeedNodes'] | length }}"
+
+- name: Display total count of seed nodes
+  debug:
+    var: totalSeedNodes
+    verbosity: 2
+
+- name: Seed nodes odd number count check
+  fail:
+    msg: "Total count for seed nodes should be odd"
+  when: totalSeedNodes | int is divisibleby 2
