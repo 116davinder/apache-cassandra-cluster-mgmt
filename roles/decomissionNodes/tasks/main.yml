@@ -22,6 +22,16 @@
     cassandraServiceName: cassandra
     cassandraState: stopped
 
+- name: Cassandra Port Status
+  include_role:
+    name: portCheck
+  vars:
+    PortNumber: "{{ item }}"
+    PortStatus: stopped
+  loop:
+    - "{{ cassandraStoragePort }}"
+    - "{{ cassandraNativeTransportPort }}"
+
 - name: Removing all installation files
   command: "/bin/rm -rf {{ cassandraInstallDir }}/apache-cassandra-*"
 

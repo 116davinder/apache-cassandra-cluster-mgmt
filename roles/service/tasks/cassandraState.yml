@@ -6,9 +6,3 @@
     state: "{{ cassandraState }}"
     enabled: true
     daemon_reload: true
-
-- name: Cassandra Port Status Check
-  include_tasks: cassandraPortChecking.yml
-  when:
-    - "cassandraState != 'stopped'"
-    - "cassandraServiceName == 'cassandra'"

@@ -2,6 +2,7 @@
 
 - hosts: clusterAddNodes
   gather_facts: true
+  serial: 1
   pre_tasks:
     - name: Including system upgrade role
       import_role:
@@ -26,3 +27,13 @@
       vars:
         cassandraServiceName: cassandra
         cassandraState: started
+
+    - name: Cassandra Port Status
+      include_role:
+        name: portCheck
+      vars:
+        PortNumber: "{{ item }}"
+        PortStatus: started
+      loop:
+        - "{{ cassandraStoragePort }}"
+        - "{{ cassandraNativeTransportPort }}"
