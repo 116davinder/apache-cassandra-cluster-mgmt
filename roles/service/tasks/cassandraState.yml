@@ -1,8 +1,0 @@
----
-
-- name: "{{ cassandraServiceName }} Service | {{ cassandraState }}"
-  systemd:
-    name: "{{ cassandraServiceName }}"
-    state: "{{ cassandraState }}"
-    enabled: true
-    daemon_reload: true

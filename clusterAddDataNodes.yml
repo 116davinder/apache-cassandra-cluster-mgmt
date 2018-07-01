@@ -20,13 +20,12 @@
     - service
 
   post_tasks:
-    - name: Starting all additional nodes
+    - name: Starting additional nodes
       import_role:
-        name: service
-        tasks_from: cassandraState
+        name: serviceState
       vars:
-        cassandraServiceName: cassandra
-        cassandraState: started
+        serviceName: cassandra
+        serviceState: started
 
     - name: Cassandra Port Status
       include_role:

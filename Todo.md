@@ -11,6 +11,7 @@
 - [x] add odd count test for seed nodes
 - [x] port check generic role
 - [] service generic role
+- [x] service state generic role
 - [] [add comunity templates](https://github.com/116davinder/apache-cassandra-cluster-mgmt/community) 
 - [] install opscenter
 - [] backup and restore to separate partitions/disks playbooks

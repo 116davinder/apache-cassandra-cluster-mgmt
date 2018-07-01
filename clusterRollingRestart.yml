@@ -6,11 +6,10 @@
   tasks:
     - name: including restart tasks
       import_role:
-        name: service
-        tasks_from: cassandraState
+        name: serviceState
       vars:
-        cassandraServiceName: cassandra
-        cassandraState: restarted
+        serviceName: cassandra
+        serviceState: restarted
 
     - name: Cassandra Port Status
       include_role:

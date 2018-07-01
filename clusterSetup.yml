@@ -29,11 +29,10 @@
   tasks:
     - name: Starting all seed nodes and then other nodes
       import_role:
-        name: service
-        tasks_from: cassandraState
+        name: serviceState
       vars:
-        cassandraServiceName: cassandra
-        cassandraState: started
+        serviceName: cassandra
+        serviceState: started
 
     - name: Cassandra Port Status
       include_role:
