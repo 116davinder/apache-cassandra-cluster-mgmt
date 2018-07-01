@@ -11,3 +11,13 @@
       vars:
         cassandraServiceName: cassandra
         cassandraState: restarted
+
+    - name: Cassandra Port Status
+      include_role:
+        name: portCheck
+      vars:
+        PortNumber: "{{ item }}"
+        PortStatus: started
+      loop:
+        - "{{ cassandraStoragePort }}"
+        - "{{ cassandraNativeTransportPort }}"
