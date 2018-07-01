@@ -9,6 +9,4 @@ install:
   - pip install ansible-lint
 
 script:
-  # Check the role/playbook's syntax.
   - "ansible-lint *.yml"
-  - "ansible-lint adhoc_tasks/*.yml"
