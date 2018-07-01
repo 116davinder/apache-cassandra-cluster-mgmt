@@ -9,6 +9,9 @@
 - [x] change logging to different level and restart that node
 - [x] update jvm properties only like logging properties
 - [x] add odd count test for seed nodes
+- [x] port check generic role
+- [] service generic role
+- [] [add comunity templates](https://github.com/116davinder/apache-cassandra-cluster-mgmt/community) 
 - [] install opscenter
 - [] backup and restore to separate partitions/disks playbooks
 - [] add repair crons on each cassandra node
