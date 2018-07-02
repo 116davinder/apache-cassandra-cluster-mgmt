@@ -12,8 +12,9 @@
 - [x] port check generic role
 - [] service generic role
 - [x] service state generic role
-- [] [add comunity templates](https://github.com/116davinder/apache-cassandra-cluster-mgmt/community) 
-- [] install opscenter
+- [] [add comunity templates](https://github.com/116davinder/apache-cassandra-cluster-mgmt/community)
+- [] remove serviceState/portCheck role with simple service task if possible
+
 - [] backup and restore to separate partitions/disks playbooks
 - [] add repair crons on each cassandra node
 
@@ -24,7 +25,6 @@
 - [] add firewall rules for ufw or firewalld or iptables
 - [] Take full offsite backup of cluster
 
-#### Support for Aws Cloud
-- [] provisioning initial resources
-- [] creating auto scaling groups for data nodes
-- [] backup to S3
+#### Future Plans
+- [] support Aws cloud
+- [] install opscenter if supported
