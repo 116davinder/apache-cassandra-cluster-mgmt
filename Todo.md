@@ -17,6 +17,8 @@
 
 - [] backup and restore to separate partitions/disks playbooks
 - [] add repair crons on each cassandra node
+- [] install new version of cassandra/ activate new version using symlink
+- [] add more cassandra properties to be configurable instead of using hard template
 
 #### Testing of Cluster
 - [x] load sample data and test scaling of cassandra cluster
@@ -26,5 +28,5 @@
 - [] Take full offsite backup of cluster
 
 #### Future Plans
-- [] support Aws cloud
+- [] support Cloud Platforms
 - [] install opscenter if supported
