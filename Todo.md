@@ -19,6 +19,7 @@
 - [] add repair crons on each cassandra node
 - [] install new version of cassandra/ activate new version using symlink
 - [] add more cassandra properties to be configurable instead of using hard template
+- [] add more info about input vars into main playbooks or any other notes*
 
 #### Testing of Cluster
 - [x] load sample data and test scaling of cassandra cluster
