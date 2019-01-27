@@ -4,3 +4,5 @@ skip_list:
   - ANSIBLE0010
   - ANSIBLE0012
   - ANSIBLE0016
+  - '405'     # retry on yum/apt/package task
+  - '602'     # empty string compare issue
