@@ -1,7 +1,7 @@
 ---
 
 - name: Getting Java Home Path from System
-  shell: "readlink -fsq $(which java) | sed 's:/jre/bin/java::'"
+  shell: "set -o pipefail && readlink -fsq $(which java) | sed 's:/jre/bin/java::'"
   register: javaHomeLocation
   changed_when: false
 
