@@ -27,6 +27,11 @@ Update ```cassandraOldVersion``` var in ```group_vars/all.yml``` .
 
 ```ansible-playbook -i inventory/cluster.ini clusterRemoveOldVersions.yml```
 
+### To Upgrade existing cluster
+Update ```cassandraVersion``` var in ```group_vars/all.yml``` .
+
+```ansible-playbook -i inventory/cluster.ini clusterSetup.yml```
+
 ### Note*
 * all properties update like ```logging/jvm``` will be done in rolling update fashion
 and respective node will be restarted as well.
