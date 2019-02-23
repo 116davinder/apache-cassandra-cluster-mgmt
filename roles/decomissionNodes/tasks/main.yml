@@ -1,12 +1,12 @@
 ---
 
 - name: decomission node from cluster
-  command: "{{ cassandraInstallDir }}/cassandra/bin/nodetool decommission"
+  command: "{{ cassandraNodeTool }} decommission"
   ignore_errors: true
 
 # TODO: need more testing here
 - name: status check for decomission node
-  shell: "set -o pipefail && {{ cassandraInstallDir }}/cassandra/bin/nodetool status | grep -w '{{ ansible_host }}'"
+  shell: "set -o pipefail && {{ cassandraNodeTool }} status | grep -w '{{ ansible_host }}'"
   changed_when: false
   register: decomissionNodeStatus
   failed_when: decomissionNodeStatus.rc == 0 
