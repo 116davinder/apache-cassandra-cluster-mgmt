@@ -1,5 +1,9 @@
 ---
 
+# TODO: download cassandra tar file to ansible server only if possible 
+#       to reduce multiple downloads on all nodes.
+#       Not Required: if downloading from local company mirror.
+
 - name: Download and Unarchive cassandra | {{ cassandraVersion }}
   unarchive:
     src: "{{ cassandraUrl }}"
