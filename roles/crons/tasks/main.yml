@@ -1,1 +1,13 @@
 ---
+
+- name: creating a cassandra auto repair cron file under /etc/cron.d
+  cron:
+    name: cassandra auto repair
+    minute: "*"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "{{ 6 | random(seed=inventory_hostname) }}" # default gc_grace_period is 10 days
+    user: root
+    job: "{{ cassandraNodeTool }} repair -full -local -seq >> {{ cassandraRepairCronsLogFile }} >&"
+    cron_file: cassandra_auto_repair

@@ -1,0 +1,6 @@
+---
+
+- hosts: clusterNodes:clusterSeedNodes:clusterAddNodes
+  gather_facts: true
+  roles:
+    - crons
