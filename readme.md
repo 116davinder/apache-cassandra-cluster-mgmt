@@ -1,34 +1,49 @@
 [![Build Status](https://travis-ci.org/116davinder/apache-cassandra-cluster-mgmt.svg?branch=master)](https://travis-ci.org/116davinder/apache-cassandra-cluster-mgmt)
 
 ### To Run start new cluster
+* Update Required vars in ```group_vars/all.yml``` .
+* Update Required vars in ```inventory/cluster.ini``` .
+
 ```ansible-playbook -i inventory/cluster.ini clusterSetup.yml```
 
 ### To do rolling restart of full cluster
 ```ansible-playbook -i inventory/cluster.ini clusterRollingRestart.yml```
 
 ### To add data node to running cluster
+* Update Required vars in ```inventory/cluster.ini``` .
+
 ```ansible-playbook -i inventory/cluster.ini clusterAddDataNodes.yml```
 
 ### To remove data node to running cluster
+* Update Required vars in ```inventory/cluster.ini``` .
+
 ```ansible-playbook -i inventory/cluster.ini clusterRemoveDataNodes.yml```
 
 ### To update logging properties to running cluster
-Update Required vars in ```group_vars/all.yml``` .
+* Update Required vars in ```group_vars/all.yml``` .
 
 ```ansible-playbook -i inventory/cluster.ini clusterLogging.yml```
 
 ### To update jvm properties to running cluster
-Update Required vars in ```group_vars/all.yml``` .
+* Update Required vars in ```group_vars/all.yml``` .
 
 ```ansible-playbook -i inventory/cluster.ini clusterJvmConfigs.yml```
 
+### To add auto repair crons to running cluster
+* It generate random number between 0 to 6 to select weekday for cron to run for given node.
+* It will also use sepuential full repair for given node.
+
+```ansible-playbook -i inventory/cluster.ini clusterRepairCrons.yml```
+
 ### To remove old cassandra versions
-Update ```cassandraOldVersion``` var in ```group_vars/all.yml``` .
+* Update ```cassandraOldVersion``` var in ```group_vars/all.yml``` .
 
 ```ansible-playbook -i inventory/cluster.ini clusterRemoveOldVersions.yml```
 
 ### To Upgrade existing cluster
-Update ```cassandraVersion``` var in ```group_vars/all.yml``` .
+* Update ```cassandraVersion``` var in ```group_vars/all.yml``` .
+
+It will install latest version in parallel but restart will be done in rolling fashion.**(seed nodes first then data nodes)**
 
 ```ansible-playbook -i inventory/cluster.ini clusterSetup.yml```
 
