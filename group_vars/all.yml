@@ -41,7 +41,7 @@ cassandraOldVersion: 3.11.1 # only used in cassandraRomveOldVersions.yml
 cassandraDownloadRegion: eu             # eu/us
 cassandraUrl: "http://www-{{ cassandraDownloadRegion }}.apache.org/dist/cassandra/{{ cassandraVersion }}/apache-cassandra-{{ cassandraVersion }}-bin.tar.gz"
 
-cassandraDownloadLocalMirror: false     # set to true if you wanna download it from local company mirror
+cassandraDownloadFromLocalMirror: false     # set to true if you wanna download it from local company mirror
 cassandraLocalMirrorUrl: "http://company.in/apache-cassandra-{{ cassandraVersion }}-bin.tar.gz"
 
 cassandraPidDir: /var/run/cassandra

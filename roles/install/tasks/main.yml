@@ -4,11 +4,11 @@
   include_tasks: download.yml
   vars:
     cassandraUrl: "{{ cassandraLocalMirrorUrl }}"
-  when: cassandraDownloadLocalMirror
+  when: cassandraDownloadFromLocalMirror
 
 - name: Download cassandra | Internet Link
   include_tasks: download.yml
-  when: not cassandraDownloadLocalMirror
+  when: not cassandraDownloadFromLocalMirror
 
 - name: Create cassandra dir symlink
   include_tasks: createSymlink.yml
