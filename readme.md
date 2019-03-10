@@ -50,8 +50,7 @@ It will install latest version in parallel but restart will be done in rolling f
 ### To down grade existing cluster
 **Prequisties**
 * Update ```cassandraOldVersion``` var in ```group_vars/all.yml``` .
-* Older version folder should be existing ```{{ cassandraInstallDir }}/apache-cassandra-{{ cassandraOldVersion }}```.
-* It won`t download old version tar file if required then use ```clusterSetup.yml``` instead of ```clusterDownGradeVersion.yml```.
+* It won`t download old version cassandra tar files. if required then use ```clusterSetup.yml``` instead of ```clusterDownGradeVersion.yml```.
 
 It will Change symlink for service and will do the rolling restart of full cluster.**(seed nodes first then data nodes)**
 

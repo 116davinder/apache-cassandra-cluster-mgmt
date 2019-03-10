@@ -7,6 +7,20 @@
 
 - hosts: clusterSeedNodes:clusterNodes:clusterAddNodes
   gather_facts: false
+  any_errors_fatal: true
+  tasks:
+    - name: check cassandra-{{ cassandraOldVersion }} installation files
+      stat:
+        path: "{{ cassandraInstallDir }}/apache-cassandra-{{ cassandraOldVersion }}/bin/cassandra"
+      register: cassandraOldVersionStatus
+
+    - name: fails if cassandra installation files are missing
+      fail:
+        msg: "cassandra down grade is not possible as cassandra old installation files are missing"
+      when: not cassandraOldVersionStatus.exists
+
+- hosts: clusterSeedNodes:clusterNodes:clusterAddNodes
+  gather_facts: false
   serial: 1
   tasks:
     - name: reverting cassandra version to {{ cassandraOldVersion }}
