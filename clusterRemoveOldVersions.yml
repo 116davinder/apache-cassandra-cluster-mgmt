@@ -8,5 +8,5 @@
         path: "{{ cassandraInstallDir }}/apache-cassandra-{{ cassandraOldVersion }}"
         state: absent
       when:
-        - cassandraOldVersion
-        - cassandraOldVersion != cassandraVersion
+        - cassandraOldVersion is defined
+        - cassandraOldVersion is version(cassandraVersion, '!=')

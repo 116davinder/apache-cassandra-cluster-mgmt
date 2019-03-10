@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/116davinder/apache-cassandra-cluster-mgmt.svg?branch=master)](https://travis-ci.org/116davinder/apache-cassandra-cluster-mgmt)
 
-### To Run start new cluster
+### To Start new cluster
 * Update Required vars in ```group_vars/all.yml``` .
 * Update Required vars in ```inventory/cluster.ini``` .
 
@@ -56,7 +56,7 @@ and respective node will be restarted as well.
 
 ### Tested Ansible Version
 ```
-ansible 2.6.0
+ansible 2.7.8
   config file = None
   configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python2.7/site-packages/ansible
@@ -67,7 +67,7 @@ ansible 2.6.0
 ### Tested OS Version
 ```
 $cat /etc/redhat-release
-CentOS Linux release 7.5.1804 (Core)
+CentOS Linux release 7.6.1810 (Core)
 ```
 
 ### Recommended Settings

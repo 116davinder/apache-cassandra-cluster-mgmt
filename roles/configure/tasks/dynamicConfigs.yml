@@ -3,3 +3,4 @@
   template:
     src: "{{ cassandraConfigFile }}"
     dest: "{{ cassandraInstallDir }}/cassandra/conf/{{ cassandraConfigFile }}"
+  register: configStatus
