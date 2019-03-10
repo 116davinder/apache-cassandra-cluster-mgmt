@@ -67,7 +67,7 @@ ansible 2.7.8
 ### Tested OS Version
 ```
 $cat /etc/redhat-release
-CentOS Linux release 7.5.1804 (Core)
+CentOS Linux release 7.6.1810 (Core)
 ```
 
 ### Recommended Settings
