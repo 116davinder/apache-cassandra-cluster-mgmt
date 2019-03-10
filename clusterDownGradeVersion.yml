@@ -1,0 +1,36 @@
+---
+
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - initialClusterChecks
+
+- hosts: clusterSeedNodes:clusterNodes:clusterAddNodes
+  gather_facts: false
+  serial: 1
+  tasks:
+    - name: reverting cassandra version to {{ cassandraOldVersion }}
+      import_role:
+        name: install
+        tasks_from: createSymlink
+      vars:
+        cassandraVersion: "{{ cassandraOldVersion }}"
+
+    - name: restarting all seed nodes and then other nodes
+      import_role:
+        name: serviceState
+      vars:
+        serviceName: cassandra
+        serviceState: restarted
+      when: cassandraSymlinkStatus.changed
+
+    - name: Cassandra Port Status
+      include_role:
+        name: portCheck
+      vars:
+        PortNumber: "{{ item }}"
+        PortStatus: started
+      loop:
+        - "{{ cassandraStoragePort }}"
+        - "{{ cassandraNativeTransportPort }}"
+      when: cassandraSymlinkStatus.changed
