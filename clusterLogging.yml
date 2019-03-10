@@ -1,6 +1,6 @@
 ---
 
-- hosts: clusterNodes:clusterSeedNodes
+- hosts: clusterNodes:clusterSeedNodes:clusterAddNodes
   gather_facts: true
   serial: 1
   tasks:
@@ -9,7 +9,6 @@
         tasks_from: dynamicConfigs
       vars:
         - cassandraConfigFile: logback.xml
-      register: configStatus
   
     - name: Restarting all nodes
       import_role:
