@@ -35,8 +35,8 @@ cassandraGcAlgorithm: UseParNewGC       # UseParNewGC / G1GC
 cassandraStoragePort: 7000
 cassandraNativeTransportPort: 9042
 
-cassandraVersion: 3.11.2
-cassandraOldVersion: 3.11.1 # only used in cassandraRomveOldVersions.yml
+cassandraVersion: 3.11.4
+cassandraOldVersion: 3.11.2 # only used in cassandraRomveOldVersions.yml
 
 cassandraDownloadRegion: eu             # eu/us
 cassandraUrl: "http://www-{{ cassandraDownloadRegion }}.apache.org/dist/cassandra/{{ cassandraVersion }}/apache-cassandra-{{ cassandraVersion }}-bin.tar.gz"
