@@ -9,4 +9,4 @@ install:
   - pip install ansible-lint
 
 script:
-  - "ansible-lint *.yml"
+  - "ansible-lint *.yml -v"

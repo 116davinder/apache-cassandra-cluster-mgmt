@@ -7,3 +7,4 @@
     owner: "{{ cassandraUser }}"
     group: "{{ cassandraGroup }}"
     state: link
+  register: cassandraSymlinkStatus
